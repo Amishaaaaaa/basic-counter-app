@@ -1,47 +1,85 @@
+<!-- Composition api -->
 <script setup>
-import HelloWorld from './components/HelloWorld.vue'
-import TheWelcome from './components/TheWelcome.vue'
+  import { ref } from "vue";
+  const count = ref(0);
+
+  const addToCount = () => {
+    count.value = count.value + 1;
+  }
+  const subtractFromCount = () => {
+    count.value = count.value - 1;
+  }
 </script>
 
+  
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
-
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-    </div>
-  </header>
-
   <main>
-    <TheWelcome />
+    <div>
+      <h4>
+      The current count is...
+      </h4>
+      <h1>{{ count }}</h1>
+      <button @click="subtractFromCount()">-</button>
+      <button @click="addToCount()">+</button>
+    </div>
   </main>
 </template>
+ 
+
 
 <style scoped>
-header {
-  line-height: 1.5;
-}
-
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
-
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
+  main {
+    background-color: rgb(174, 205, 227);
+    height: 100vh;
+    width: 100vw;
+    display:flex;
+    align-items: center;
+    justify-content: center;
   }
-
-  .logo {
-    margin: 0 2rem 0 0;
+  div {
+    display:flexbox;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background-color: rgb(205, 79, 79);
+    height: 50vh;
+    width: 80vh;
+    border-radius: 2vh;
+  } 
+  h4 {
+    margin-top: 3vh;
+    font-size: 5vh;
   }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
+  h1 {
+    font-size: 15vh;
   }
-}
+  button {
+    padding: 2vh;
+    font-size: 4vh;
+    width: 20vh;
+    border-radius: 3vh;
+    background-color: aliceblue;
+  }
 </style>
+
+
+
+
+<!-- options api -->
+<!-- <script>
+  export default({
+    data(){
+      return {
+        count:0
+      }
+    },
+    methods: {
+      addToCount() {
+        this.count = this.count + 1;
+      },
+      subtractFromCount() {
+        this.count = this.count - 1;
+      }
+    }
+  })
+</script> -->
